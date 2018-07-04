@@ -31,8 +31,13 @@
                 <a class="link-btn" v-on:click="ToLogin">登录</a>
             </p>
         </div>
+        <Modal
+            title="提示"
+            v-model="modalFlag"
+            class-name="vertical-center-modal">
+            <p>{{modalMSG}}</p>
+        </Modal>
     </div>
-
 </template>
 
 <script>
@@ -61,7 +66,9 @@
                 inout_data: {
                     pwdType: 'password',
                     icon: 'eye-disabled'
-                }
+                },
+                modalFlag: false,
+                modalMSG: ''
             }
         },
         mounted() {            
@@ -96,7 +103,9 @@
             },
             login() {
                 if (this.mobile == '' || this.password == '') {
-                    alert('请输入手机号或者密码')
+                    this.modalMSG="请输入手机号或者密码";
+                    this.modalFlag = true
+                    // alert('请输入手机号或者密码')
                 } else {
                     // alert('开始提交登录表单');
 
@@ -114,10 +123,13 @@
                         let v = res.data;
 
                         if (v.code != '0') {
-                            alert(res.data.msg)
-
+                            // alert(res.data.msg)
+                            this.modalMSG=res.data.msg;
+                            this.modalFlag = true
                         } else {
-                            alert('登录成功');
+                            // alert('登录成功');
+                            this.modalMSG='登录成功';
+                            this.modalFlag = true
                             // 方法一 存储Cookie
                             // setCookie('mobile',this.mobile,1000*60)
                             // 方法二 存储localStorage
@@ -157,7 +169,9 @@
                     this.axios.post('/api/addUser', params).then((res) => {
                         let v = res.data;
                         if (v.code == 0) {
-                            alert('注册成功');
+                            this.modalMSG='注册成功';
+                            this.modalFlag = true
+                            // alert('注册成功');
                             
                             let userInfo = {
                                 vueMobile: this.newMobile,
@@ -174,9 +188,11 @@
                             localStorage.setItem('userInfo',JSON.stringify(userInfo));
                             setTimeout(function(){
                                 this.$router.push('/account/detail')
-                            }.bind(this),1000)
+                            }.bind(this),2000)
                         } else {
-                            alert(v.msg)
+                            // alert(v.msg)
+                            this.modalMSG=v.msg;
+                            this.modalFlag = true
                         }
                     })
                 }
