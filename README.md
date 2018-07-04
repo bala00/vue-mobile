@@ -1,6 +1,7 @@
 # vue-mobile
 
-> Vue.js+webpac+IView+axios + node.js + MySQL
+>Vue.js 个人移动端开发项目
+
 
 ## Build Setup
 
@@ -20,6 +21,12 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+## 使用技术
+### 前端
+    Vue.js + webpack + iView + axios + vue-router + bus/vuex/localStorage
+
+### 后端
+    Node.js + MySQL
 
 ## 项目安装步骤
 1、npm install 
