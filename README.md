@@ -42,4 +42,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 6、项目启动后会报一些插件未安装的提示，分别安装提示中项目所有需要的插件
 
 ## 项目展示
-[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
+    见项目根目录showProject下视频
